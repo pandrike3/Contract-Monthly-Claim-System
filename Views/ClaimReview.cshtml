@@ -1,0 +1,31 @@
+﻿ @model List<YourNamespace.Models.ClaimModel>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Lecturer</th>
+            <th>Hours Worked</th>
+            <th>Hourly Rate</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.LecturerName</td>
+                <td>@claim.HoursWorked</td>
+                <td>@claim.HourlyRate</td>
+                <td>@claim.Status</td>
+                <td>
+                    <form asp-action="UpdateClaimStatus" method="post">
+                        <input type="hidden" name="ClaimId" value="@claim.ClaimId" />
+                        <button type="submit" name="Status" value="Approved" class="btn btn-success">Approve</button>
+                        <button type="submit" name="Status" value="Rejected" class="btn btn-danger">Reject</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

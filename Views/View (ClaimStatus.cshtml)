@@ -1,0 +1,8 @@
+﻿ @model YourNamespace.Models.ClaimModel
+
+<div>
+    <h3>Claim Status</h3>
+    <p>Status: @Model.Status</p>
+    <p>Date Submitted: @Model.DateSubmitted</p>
+</div>
+

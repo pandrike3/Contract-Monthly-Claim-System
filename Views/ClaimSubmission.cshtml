@@ -1,0 +1,18 @@
+﻿ @model YourNamespace.Models.ClaimModel
+
+<form asp-action="SubmitClaim" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="HoursWorked">Hours Worked</label>
+        <input type="number" asp-for="HoursWorked" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="HourlyRate">Hourly Rate</label>
+        <input type="number" asp-for="HourlyRate" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="Notes">Additional Notes</label>
+        <textarea asp-for="Notes" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
