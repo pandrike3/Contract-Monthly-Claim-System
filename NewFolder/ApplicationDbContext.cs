@@ -12,8 +12,9 @@ namespace CMCS.Data
 
         // DbSet for each entity you want to track in the database
         public DbSet<Claim> Claims { get; set; }
-
+        public DbSet<User> Users { get; set; }
         // Add other DbSets here for other entities if needed
+       
     }
 }
 

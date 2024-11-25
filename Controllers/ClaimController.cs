@@ -1,35 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CMCS.Data;
+using Microsoft.AspNetCore.Mvc;
 
-internal class Program
+public class ClaimController : Controller
 {
-    private static void Main(string[] args)
+    private readonly ApplicationDbContext _context;
+
+    public ClaimController(ApplicationDbContext context)
     {
-        [HttpPost]
-        public IActionResult SubmitClaim(ClaimModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                // Save to the database
-                model.Status = "Pending";
-                model.DateSubmitted = DateTime.Now;
+        _context = context;
+    }
 
-                _context.Claims.Add(model);  // Assuming you have a DbSet<ClaimModel>
-                _context.SaveChanges();
-
-                return RedirectToAction("Confirmation");
-            }
-            return View(model);
-        }
-
-        public IActionResult UpdateClaimStatus(int claimId, string status)
-        {
-            var claim = _context.Claims.Find(claimId);
-            if (claim != null)
-            {
-                claim.Status = status;
-                _context.SaveChanges();
-            }
-            return RedirectToAction("ReviewClaims");
-        }
+    // Example Action
+    public IActionResult Index()
+    {
+        var claims = _context.Claims.ToList();
+        return View(claims);
+        
     }
 }
